@@ -27,9 +27,37 @@
 첫째 줄에 게임의 상금을 출력 한다.
 */
 
-const input = require("fs")
+const n = require("fs")
   .readFileSync("example.txt")
   .toString()
   .trim()
   .split(" ")
   .map((x) => +x);
+
+const a = n[0];
+const b = n[1];
+const c = n[2];
+// 입력받은 배열의 상수들을 각각 분리시켜 선언한다.
+
+
+let money = 0;
+let maxNum = 0;
+// 변수를 이용하여 계산식을 만들어준다.
+
+if(a === b && a === c) {
+  // 1. 같은 눈 3개일 때를 조건문으로 표현
+  money = 10000+a*1000;
+} else if( a ===b || a ===c || b === c) {
+  // OR 연산자를 이용해서 조건문을 표현
+  if(a === b || a === c) {
+    money = 1000 + a * 100;
+  } else {
+    money = 1000+b*100;
+  }
+} else {
+  maxNum =Math.max(...n);
+  money = maxNum * 100;
+}
+
+
+console.log(money);
